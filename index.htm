@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Countdown to Vrithi's Birthday 🎉</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #ff9a9e, #fad0c4, #fbc2eb);
+      color: white;
+      text-align: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    header {
+      padding: 30px 0 10px;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin: 0;
+    }
+
+    #countdown {
+      font-size: 2em;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+      margin: 20px auto;
+      width: fit-content;
+    }
+
+    .heart {
+      font-size: 2rem;
+      animation: pulse 1s infinite;
+      margin: 10px 0 30px;
+    }
+
+    .profile-pic {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 5px solid white;
+      object-fit: cover;
+      box-shadow: 0 0 15px white;
+      margin: 20px auto;
+    }
+
+    .gallery {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding: 20px;
+    }
+
+    .gallery img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 20px;
+      border: 3px solid white;
+      box-shadow: 0 0 10px white;
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px #fff, 0 0 30px #ffb6c1;
+    }
+
+    audio {
+      display: none;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="Vrithi1.jpg" alt="Vrithi" class="profile-pic" />
+    <h1>Countdown to Vrithi's Birthday 🎂</h1>
+    <div id="countdown">Loading...</div>
+    <div class="heart">💖</div>
+  </header>
+
+  <!-- 🎉 Birthday Gallery -->
+  <section class="gallery">
+    <img src="Vrithi1.jpg" alt="Memory 1" />
+    <img src="Vrithi2.jpg" alt="Memory 2" />
+    <img src="Vrithi3.jpg" alt="Memory 3" />
+    <img src="Vrithi4.jpg" alt="Memory 4" />
+    <img src="Vrithi5.jpg" alt="Memory 5" />
+  </section>
+
+  <!-- Background Music -->
+  <audio autoplay loop>
+    <source src="happy-birthday.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <footer>Made with 💖 by Chirag for Vrithi</footer>
+
+  <script>
+    const countdown = document.getElementById('countdown');
+    const birthdayDate = new Date("July 28, 2025 00:00:00").getTime();
+
+    const interval = setInterval(() => {
+      const now = new Date().getTime();
+      const diff = birthdayDate - now;
+
+      if (diff <= 0) {
+        clearInterval(interval);
+        countdown.innerHTML = "🎉 Happy Birthday Vrithi! 🎉";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }, 1000);
+  </script>
+
+</body>
+</html>
